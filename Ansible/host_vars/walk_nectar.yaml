@@ -1,0 +1,120 @@
+# Common vars
+availability_zone: melbourne-qh2-uom
+
+ansible_ssh_private_key_file: ./walk.pem
+
+# Volume
+volumes:
+  - vol_name: vol_1
+    vol_size: 50
+  - vol_name: vol_2
+    vol_size: 50
+  - vol_name: vol_3
+    vol_size: 50
+  - vol_name: vol_web
+    vol_size: 50
+  - vol_name: vol_pro
+    vol_size: 50
+  
+volume_dbserver: ['vol_1','vol_2','vol_3']
+volume_server: ['vol_web','vol_pro']
+
+# Security group
+security_groups:
+  - name: walk_ssh
+    description: "Security group for ssh"
+  - name: walk_http_https
+    description: "Security group for https"
+  - name: walk_couchdb
+    description: "Security group for couchdb"
+  - name: walk_webserver
+    description: "Security group for webserver"
+
+# Security group rules
+security_groups_rules:
+  - name: walk_ssh
+    description: "Security group for ssh"
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+  - name: walk_http_https
+    description: "Security group for https"
+    protocol: tcp
+    port_range_min: 443
+    port_range_max: 443
+    remote_ip_prefix: 0.0.0.0/0
+  - name: walk_http_https
+    description: "Security group for https"
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+  - name: walk_couchdb
+    description: "Security group for couchdb"
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    remote_ip_prefix: 0.0.0.0/0  
+  - name: walk_couchdb
+    description: "Security group for couchdb"
+    protocol: tcp
+    port_range_min: 5986
+    port_range_max: 5986
+    remote_ip_prefix: 0.0.0.0/0 
+  - name: walk_couchdb
+    description: "Security group for couchdb"
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    remote_ip_prefix: 0.0.0.0/0 
+  - name: walk_couchdb
+    description: "Security group for couchdb"
+    protocol: tcp
+    port_range_min: 9110
+    port_range_max: 9110
+    remote_ip_prefix: 0.0.0.0/0 
+  - name: walk_webserver
+    description: "Security group for webserver"
+    protocol: tcp
+    port_range_min: 5000
+    port_range_max: 5000
+    remote_ip_prefix: 0.0.0.0/0   
+
+securitygroups_dbserver: ['walk_ssh','walk_http_https','walk_couchdb']
+securitygroups_webserver: ['walk_ssh','walk_http_https','walk_webserver']
+
+# Instance
+instance_couchdb:
+  - instance_name: walk_1
+    instance_image: 12da1997-5122-4be3-a2a9-2f44961c1b16
+    instance_key_name: walk
+    instance_flavor: uom.general.2c8g
+    group: dbserver
+  - instance_name: walk_2
+    instance_image: 12da1997-5122-4be3-a2a9-2f44961c1b16
+    instance_key_name: walk
+    instance_flavor: uom.general.2c8g
+    group: dbserver
+  - instance_name: walk_3
+    instance_image: 12da1997-5122-4be3-a2a9-2f44961c1b16
+    instance_key_name: walk
+    instance_flavor: uom.general.2c8g
+    group: dbserver
+
+instance_webpro:
+  - instance_name: walk_web
+    instance_image: 12da1997-5122-4be3-a2a9-2f44961c1b16
+    instance_key_name: walk
+    instance_flavor: uom.general.2c8g
+    group: webproserver
+  - instance_name: walk_pro
+    instance_image: 12da1997-5122-4be3-a2a9-2f44961c1b16
+    instance_key_name: walk
+    instance_flavor: uom.general.2c8g
+    group: webproserver
+
+couch_admin_user: admin_test_walk
+couch_admin_password: admin_test_walk
+
+bind_address: 0.0.0.0

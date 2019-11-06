@@ -1,0 +1,41 @@
+# Create web and processor instance on Nectar
+- name: Create web and processor instance
+  os_server:
+    name: '{{ item[0].instance_name }}'
+    image: '{{ item[0].instance_image }}'
+    key_name: '{{ item[0].instance_key_name }}'
+    flavor: '{{ item[0].instance_flavor }}'
+    availability_zone: '{{ availability_zone }}'
+    security_groups: '{{ securitygroups_dbserver }}'
+    volumes: '{{ item[1] }}'
+    auto_floating_ip: yes
+    wait: yes
+    timeout: 600
+    state: present
+    meta:
+      group: '{{ item[0].group }}'
+  register: os_webproinstance
+  with_together:
+    - '{{ instance_webpro }}'
+    - ['vol_web','vol_pro']
+
+# Create couchdb instance on Nectar
+- name: Create couchdb instance
+  os_server:
+    name: '{{ item[0].instance_name }}'
+    image: '{{ item[0].instance_image }}'
+    key_name: '{{ item[0].instance_key_name }}'
+    flavor: '{{ item[0].instance_flavor }}'
+    availability_zone: '{{ availability_zone }}'
+    security_groups: '{{ securitygroups_dbserver }}'
+    volumes: '{{ item[1] }}'
+    auto_floating_ip: yes
+    wait: yes
+    timeout: 600
+    state: present
+    meta:
+      group: '{{ item[0].group }}'
+  register: os_couchdbinstance
+  with_together:
+    - '{{ instance_couchdb }}'
+    - ['vol_1','vol_2','vol_3']

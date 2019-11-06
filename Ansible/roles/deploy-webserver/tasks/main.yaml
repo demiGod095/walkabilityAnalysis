@@ -1,0 +1,43 @@
+---
+# Deploying webserver
+
+- name: Update the yum cache 
+  yum:
+    update_cache: yes
+
+- name: Install required packages for webserver
+  yum:
+    name: "{{ web_dependencies }}"
+    state: latest
+
+- name: Unarchive a file that is already on the remote machine
+  unarchive:
+    src: ../files/web.tar
+    dest: /var/www/html/
+
+- name: Copy the config file
+  template:
+    src: ../templates/couchdb.txt.j2
+    dest: '/var/www/html/web/couchdb.txt'
+    mode: 0755
+    owner: ec2-user
+    group: ec2-user
+
+- name: Change owner of Path
+  file:
+    path: /var/www/html/
+    owner: apache
+    group: apache
+    recurse: yes
+
+# - name: Set sebool permission
+#   shell: setsebool -P httpd_execmem 1
+
+- name: Start apache and php sevices
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+    - 'php-fpm'
+    - 'httpd'

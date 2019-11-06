@@ -1,0 +1,5 @@
+#Vars
+
+device: /dev/vdb
+mountpoint: /mnt/walk
+fstype: ext4

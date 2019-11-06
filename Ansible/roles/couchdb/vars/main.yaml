@@ -1,0 +1,7 @@
+couchdb_dependencies: ['couchdb', 'erlang']
+
+magic_cookie: "Walkability"
+
+replication: 2
+
+com_port: 9110

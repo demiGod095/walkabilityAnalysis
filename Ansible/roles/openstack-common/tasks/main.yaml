@@ -1,0 +1,26 @@
+# Setting proxies
+- name: Set Proxies
+  lineinfile:
+    path: '/etc/environment'
+    line: "{{ item }}"
+  with_items:
+    - 'http_proxy="http://wwwproxy.unimelb.edu.au:8000"'
+    - 'https_proxy="http://wwwproxy.unimelb.edu.au:8000"'
+    - 'ftp_proxy="http://wwwproxy.unimelb.edu.au:8000"'
+    - 'no_proxy=localhost,127.0.0.1,127.0.1.1,ubuntu,{{ansible_eth0.ipv4.address}}'
+
+- name: Update yum cache 
+  yum:
+    update_cache: yes
+
+- name: Install the required dependencies
+  yum:
+    name: python-pip
+    state: latest
+
+- name: Update pip 
+  pip:
+    name: ['pip']
+    state: latest
+
+

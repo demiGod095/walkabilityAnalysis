@@ -1,0 +1,39 @@
+- name: Wait for port 22 to be ready
+  hosts: all
+  gather_facts: False
+  roles:
+  - checkssh
+
+- hosts: all
+  vars_files:
+    - host_vars/walk_nectar.yaml
+  gather_facts: true
+  become: true
+  roles:
+    - role: openstack-common
+    - role: openstack-mount
+
+- hosts: dbserver
+  vars_files:
+    - host_vars/walk_nectar.yaml
+  gather_facts: true
+  become: true
+  roles:
+    - role: couchdb
+    - role: couchdb-config
+
+- hosts: procserver
+  vars_files:
+    - host_vars/walk_nectar.yaml
+  gather_facts: true
+  become: true
+  roles:
+    - role: deploy-processor
+
+- hosts: webserver
+  vars_files:
+    - host_vars/walk_nectar.yaml
+  gather_facts: true
+  become: true
+  roles:
+    - role: deploy-webserver

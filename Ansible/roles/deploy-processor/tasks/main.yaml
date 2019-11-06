@@ -1,0 +1,23 @@
+---
+# Deploying processor instance and running python program
+
+- name: Install python libraries
+  pip:
+    name: couchdb
+    state: latest
+
+- name: Copy the config file
+  template:
+    src: ../templates/couchdb.txt.j2
+    dest: '/home/ec2-user/couchdb.txt'
+    mode: 0755
+    owner: ec2-user
+    group: ec2-user
+
+- name: Unarchive a file that is already on the remote machine
+  unarchive:
+    src: ../files/pre.tar
+    dest: /home/ec2-user
+
+- name: Executing the script
+  shell: /usr/bin/python /home/ec2-user/pre/upload.py
