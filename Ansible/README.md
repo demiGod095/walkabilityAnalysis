@@ -3,6 +3,7 @@ Steps to execute the server configuration, couchdb configuration and deployment
 2. Execute run-config-server.sh file using the key generated in the unimelb research cloud.
 3. Once the instances are created, edit/create a hosts file in the following example format
 
+```
 [webserver]
 45.113.232.171
 [procserver]
@@ -11,7 +12,7 @@ Steps to execute the server configuration, couchdb configuration and deployment
 115.146.93.227
 115.146.93.213
 115.146.92.54
-
+```
 where instance walk_web ip address is stored under [webserver], walk_pro under [procserver] and walk_1, walk_2 & walk_3 stored under [dbserver].
 
 3. Execute run-config-env-couchdb-deploy.sh file. 
