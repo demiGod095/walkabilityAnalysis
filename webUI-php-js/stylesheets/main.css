@@ -1,0 +1,83 @@
+.dropdown-container {
+    display: none;
+    background-color: #525252;
+    padding-left: 8px;
+  }
+
+
+
+  /* Set height of body and the document to 100% to enable "full page tabs" */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+  }
+  
+  /* Style tab links */
+  .tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+  }
+  
+  .tablink:hover {
+    background-color: #777;
+  }
+  
+  /* Style the tab content (and add height:100% for full page content) */
+  .tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+  }
+  
+  #City {background-color: #e4e4e4;}
+  #Suburb {background-color: #e4e4e4;}
+
+
+  .boxed {
+  border: 1px solid black ;
+}
+
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /*padding: 16px;*/
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.leftcolumn {
+  float: left;
+  width: 80%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: right;
+  width: 15%;
+  padding-left: 20px;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other 
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}*/
