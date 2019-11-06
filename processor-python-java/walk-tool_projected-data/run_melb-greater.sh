@@ -1,0 +1,1 @@
+java -jar -Dlog4j.configuration=file:log4j.properties walkability.jar psma_lines_melb-greater.geojson sa1_points_melb-greater_centroids.geojson mesh_extracted_shp/mesh_melb-greater_UTM.shp op_melb-greater
