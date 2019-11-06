@@ -1,6 +1,7 @@
 Steps to execute the server configuration, couchdb configuration and deployment
-1. Execute run-config-server.sh file using the key generated in the unimelb research cloud.
-2. Once the instances are created, edit/create a hosts file in the following example format
+1. Generate your ssh-key named 'walk.pem' and place it in the Ansible directory.
+2. Execute run-config-server.sh file using the key generated in the unimelb research cloud.
+3. Once the instances are created, edit/create a hosts file in the following example format
 
 [webserver]
 45.113.232.171
