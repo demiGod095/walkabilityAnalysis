@@ -5,3 +5,6 @@ Authors:
 - Shreyas Walvekar	(961621)
 - Sachin Antony Edwin Earayil	(947044)
 - Krishna Srinivas Sundararajan	(977863)
+
+
+Please find folder wise readmes in the respective folders.
