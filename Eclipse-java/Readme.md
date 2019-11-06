@@ -1,6 +1,6 @@
 This is a modified version of the eclipse project found [here](https://github.com/Serena-Chenzz/WalkabilityAurin/tree/master/Walkability-5points/src/main/java/org/mccaughey)
 
-To make changes, simply import this folder into your Java Eclipse workspace and let the maven dependancies to get resolved.
+To make changes, simply import `Walkability-jar` folder into your Java Eclipse workspace and let the maven dependancies to get resolved.
 You might have to fix any java jdk version matching errors by configuring the project's build path. The easiest way to do this is to disable project specific java dependancy.
 The original project was using `Java 1.7`, but the current source is updated to use `Java 1.8`
 
